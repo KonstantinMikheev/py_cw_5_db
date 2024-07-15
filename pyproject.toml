@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "py-cw-5-db"
+version = "0.1.0"
+description = ""
+authors = ["KonstantinMikheev <mikhey17@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
