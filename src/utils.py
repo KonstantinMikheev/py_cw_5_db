@@ -4,8 +4,6 @@ from typing import Any
 import psycopg2
 import requests
 
-from src.config import EMPLOYERS_IDS
-
 
 def get_employers_from_list(employers_ids: list[str]) -> list[dict]:
     """ """
