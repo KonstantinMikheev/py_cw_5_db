@@ -6,7 +6,7 @@ import requests
 
 
 def get_employers_from_list(employers_ids: list[str]) -> list[dict]:
-    """ """
+    """Функция подключения к API HH.RU и получения информации о работодателях"""
     employers_data = []
     for employer_id in employers_ids:
         url = f'https://api.hh.ru/employers/{employer_id}'
@@ -21,7 +21,7 @@ def get_employers_from_list(employers_ids: list[str]) -> list[dict]:
 
 
 def get_vacancies(employers_ids: list[str]) -> list[dict]:
-    """ """
+    """Функция подключения к API HH.RU и получения вакансий по id работодателей"""
     vacancies_data = []
     for employer_id in employers_ids:
         url = f'https://api.hh.ru/vacancies?employer_id={employer_id}'
@@ -43,7 +43,7 @@ def get_vacancies(employers_ids: list[str]) -> list[dict]:
 
 
 def create_database(database_name: str, params: dict):
-    """"""
+    """Функция создания базы данных"""
 
     conn = psycopg2.connect(dbname='postgres', **params)
     conn.autocommit = True
@@ -96,12 +96,11 @@ def save_data_to_database(
         params: dict
 ) -> None:
     """
-
-    :param employers_data:
-    :param vacancies_data:
-    :param database_name:
-    :param params:
-    :return:
+    Функция добавления информации в базу данных
+    :param employers_data: информация о работодателе
+    :param vacancies_data: информация о вакансиях
+    :param database_name: название базы данных
+    :param params: параметры подключения
     """
 
     conn = psycopg2.connect(dbname=database_name, **params)
@@ -142,9 +141,9 @@ def save_data_to_database(
     conn.close()
 
 
-def save_json(data):
-    with open('/home/kmikheev/snap/python/PycharmProjects/py_cw_5_db/data.json', "w", encoding='utf-8') as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
+# def save_json(data):
+#     with open('/home/kmikheev/snap/python/PycharmProjects/py_cw_5_db/data.json', "w", encoding='utf-8') as file:
+#         json.dump(data, file, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
